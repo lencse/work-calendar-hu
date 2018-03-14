@@ -1,0 +1,42 @@
+{
+    "name": "lencse/work-calendar-api",
+    "description": "Work Calendar HU API",
+    "keywords": [],
+    "homepage": "https://api.work-calendar.hu",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Levente Löki",
+            "email": "leventeloki@gmail.com",
+            "homepage": "http://lokilevente.hu"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Lencse\\WorkCalendar\\Calendar\\": "src/Lencse/WorkCalendar/Calendar/",
+            "Lencse\\WorkCalendar\\Hu\\": "src/Lencse/WorkCalendar/Hu/",
+            "Lencse\\Date\\": "src/Lencse/Date/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "test/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html logs/coverage-report --coverage-clover logs/clover.xml",
+        "min-coverage": "ci-test-coverage --min-coverage 99 --clover-file logs/clover.xml",
+        "md": "phpmd src/ text phpmd.xml && phpmd test/ text phpmd.xml",
+        "cs": "phpcs --standard=PSR2 src test",
+        "loc": "phploc --count-tests -vvv src test",
+        "psalm": "psalm",
+        "test-all": "composer test-coverage && composer min-coverage && composer md && composer cs && composer psalm && composer loc"
+    }
+}
